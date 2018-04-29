@@ -20,16 +20,14 @@ client.on('message', function (topic, message) {
     // console.log(dataobj[0].data+"+"+dataobj[0].gwip);
 
     const form = new FormData();
-
     form.append('data', dataobj[0].data);
     form.append('gwip', dataobj[0].gwip);
-    form.append('gwip', dataobj[0].macAddr);
+    form.append('macAddr', dataobj[0].macAddr);
 
-    form.submit('http://class.martinintw.com/api/mqtt', function(err, res) {
+    form.submit(process.env.DB_URI, function(err, res) {
         // res – response object (http.IncomingMessage)  //
         res.resume();
     });
 
 
-})
-
+});

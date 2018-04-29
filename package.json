@@ -1,0 +1,17 @@
+{
+  "name": "mqttbroker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mqtt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^5.0.1",
+    "form-data": "^2.3.2",
+    "mqtt": "^2.17.0"
+  }
+}

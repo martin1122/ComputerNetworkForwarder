@@ -26,7 +26,12 @@ client.on('message', function(topic, message) {
     const form = new FormData();
     // form.append('data', dataobj[0].data);
     // form.append('gwip', dataobj[0].gwip);
-    var macisnum = /^\d+$/.test(dataobj[0].macAddr);
+    var macisnum;
+    if(dataobj[0].macAddr)
+    {
+        macisnum = /^\d+$/.test(dataobj[0].macAddr);
+    }
+
     if (typeof dataobj[0].macAddr !== 'undefined'&&dataobj[0].macAddr.substr(8,6)=='123456'&&macisnum&&typeof dataobj[0].data !== 'undefined')
     {
 

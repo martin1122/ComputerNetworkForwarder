@@ -54,9 +54,11 @@ client.on('message', function(topic, message) {
             }
             else //Vibration Data
             {
+                var data= dataobj[0].data;
                 form.append('macaddr', macaddr);
                 form.append('data', data);
-                console.log("vibration data");
+                console.log(macaddr);
+                console.log(data);
             }
 
             form.submit(process.env.DB_URI, function(err, res) {
@@ -69,3 +71,4 @@ client.on('message', function(topic, message) {
 });
 //remote repo
 //git remote show origin
+//git clone <url> --branch <branch>

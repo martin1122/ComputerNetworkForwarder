@@ -26,19 +26,20 @@ client.on('message', function(topic, message) {
     const form = new FormData();
     // form.append('data', dataobj[0].data);
     // form.append('gwip', dataobj[0].gwip);
-    var macisnum;
-    if(dataobj[0].macAddr)
-    {
-        macisnum = /^\d+$/.test(dataobj[0].macAddr);
-    }
-
-    if (typeof dataobj[0].macAddr !== 'undefined'&&dataobj[0].macAddr.substr(8,6)=='123456'&&macisnum&&typeof dataobj[0].data !== 'undefined')
+    // var macisnum;
+    // if(dataobj[0].macAddr)
+    // {
+    //     macisnum = /^\d+$/.test(dataobj[0].macAddr);
+    // }
+    // typeof dataobj[0].macAddr !== 'undefined'&&dataobj[0].macAddr.substr(8,6)=='123456'&&macisnum&&typeof dataobj[0].data !== 'undefined'
+    if (typeof dataobj[0].macAddr !== 'undefined'&&dataobj[0].macAddr.substr(8,2)=='aa'&&typeof dataobj[0].data !== 'undefined')
     {
 
             // console.log(dataobj[0].data.substr(4,6));
             var macaddr=dataobj[0].macAddr.substr(8);
             if(dataobj[0].data.substr(2,2)=="88") //GPS DATA
             {
+                console.log("gps");
                 var lat =0.0001*parseInt(dataobj[0].data.substr(4,6),16);
                 var lng= 0.0001*parseInt(dataobj[0].data.substr(10,6),16);
 
@@ -54,7 +55,9 @@ client.on('message', function(topic, message) {
             }
             else //Vibration Data
             {
+                console.log("vibration");
                 var data= dataobj[0].data;
+                data=parseInt(data,16);
                 form.append('macaddr', macaddr);
                 form.append('data', data);
                 console.log(macaddr);

@@ -3,7 +3,10 @@ var mqtt = require('mqtt');
 var FormData = require('form-data');
 
 
-var client = mqtt.connect(process.env.MQTT_BROKER);
+var client = mqtt.connect(process.env.MQTT_BROKER,{
+    username: process.env.USERNAME,
+        password: process.env.PASSWORD
+});
 
 client.on('connect', function() {
     client.subscribe('#');

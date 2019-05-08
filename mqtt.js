@@ -3,8 +3,9 @@ var mqtt = require('mqtt');
 var FormData = require('form-data');
 
 
+console.log(process.env.MQTTNAME);
 var client = mqtt.connect(process.env.MQTT_BROKER,{
-    username: process.env.USERNAME,
+    username: process.env.MQTTNAME,
         password: process.env.PASSWORD
 });
 
@@ -62,7 +63,7 @@ client.on('message', function(topic, message) {
                 var data= dataobj[0].data;
                 data=parseInt(data,16);
                 form.append('macaddr', macaddr);
-                form.append('data', data);
+                form.append('data', parseInt(dataobj[0].data.substr(0,4),16));
                 console.log(macaddr);
                 console.log(data);
             }
